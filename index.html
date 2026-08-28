@@ -255,5 +255,19 @@ footer a:hover{color:var(--gold)}
  document.querySelectorAll('.langbtn').forEach(function(b){b.addEventListener('click',function(){apply(b.getAttribute('data-l'));});});
  apply(def);
 })();
+</script><section id="rk-canli" style="background:#17120d;color:#f3ece0;padding:56px 20px;text-align:center;font-family:-apple-system,sans-serif;">
+  <div style="max-width:960px;margin:0 auto;">
+    <p style="letter-spacing:.18em;text-transform:uppercase;font-size:12px;color:#b9b06a;margin:0 0 8px;">Topluluk · canlı</p>
+    <h2 style="font-family:Georgia,serif;font-size:30px;margin:0 0 28px;">Rakur şu an</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:32px;justify-content:center;margin-bottom:28px;">
+      <div><div id="rk-users" style="font-size:36px;font-weight:700;color:#d9cfa0;">—</div><div style="font-size:13px;color:#9a9086;">kokteylsever</div></div>
+      <div><div id="rk-logs" style="font-size:36px;font-weight:700;color:#d9cfa0;">—</div><div style="font-size:13px;color:#9a9086;">kokteyl kaydı</div></div>
+      <div><div id="rk-cocktails" style="font-size:36px;font-weight:700;color:#d9cfa0;">—</div><div style="font-size:13px;color:#9a9086;">farklı kokteyl</div></div>
+    </div>
+    <div id="rk-top" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;"></div>
+  </div>
+</section>
+<script>
+(async function(){var K="sb_publishable_r9QAbirArp02AEGxLBRs0A_P6vVLiD5";try{var r=await fetch("https://wsnsogahsnobdrfajuxs.supabase.co/rest/v1/rpc/public_stats",{method:"POST",headers:{"apikey":K,"Authorization":"Bearer "+K,"Content-Type":"application/json"},body:"{}"});var d=await r.json();rk_users.textContent=d.users;rk_logs.textContent=d.logs;rk_cocktails.textContent=d.cocktails;(d.top||[]).forEach(function(c){var s=document.createElement("span");s.textContent=c.name;s.style.cssText="background:rgba(185,176,106,.14);border:1px solid rgba(185,176,106,.35);color:#e7dfc4;border-radius:999px;padding:7px 14px;font-size:13px;";rk_top.appendChild(s);});}catch(e){var el=document.getElementById("rk-canli");if(el)el.style.display="none";}})();
 </script>
 </body></html>
