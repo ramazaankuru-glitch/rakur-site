@@ -255,19 +255,14 @@ footer a:hover{color:var(--gold)}
  document.querySelectorAll('.langbtn').forEach(function(b){b.addEventListener('click',function(){apply(b.getAttribute('data-l'));});});
  apply(def);
 })();
-</script><section id="rk-canli" style="background:#17120d;color:#f3ece0;padding:56px 20px;text-align:center;font-family:-apple-system,sans-serif;">
-  <div style="max-width:960px;margin:0 auto;">
-    <p style="letter-spacing:.18em;text-transform:uppercase;font-size:12px;color:#b9b06a;margin:0 0 8px;">Topluluk · canlı</p>
-    <h2 style="font-family:Georgia,serif;font-size:30px;margin:0 0 28px;">Rakur şu an</h2>
-    <div style="display:flex;flex-wrap:wrap;gap:32px;justify-content:center;margin-bottom:28px;">
-      <div><div id="rk-users" style="font-size:36px;font-weight:700;color:#d9cfa0;">—</div><div style="font-size:13px;color:#9a9086;">kokteylsever</div></div>
-      <div><div id="rk-logs" style="font-size:36px;font-weight:700;color:#d9cfa0;">—</div><div style="font-size:13px;color:#9a9086;">kokteyl kaydı</div></div>
-      <div><div id="rk-cocktails" style="font-size:36px;font-weight:700;color:#d9cfa0;">—</div><div style="font-size:13px;color:#9a9086;">farklı kokteyl</div></div>
-    </div>
-    <div id="rk-top" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;"></div>
+</script><section id="rk-canli" style="background:#17120d;color:#f3ece0;padding:56px 20px;font-family:-apple-system,sans-serif;">
+  <div style="max-width:1040px;margin:0 auto;">
+    <p style="letter-spacing:.18em;text-transform:uppercase;font-size:12px;color:#b9b06a;text-align:center;margin:0 0 8px;">Topluluktan · canlı</p>
+    <h2 style="font-family:Georgia,serif;font-size:30px;text-align:center;margin:0 0 28px;">Şu an ne içiliyor?</h2>
+    <div id="rk-feed" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;"></div>
   </div>
 </section>
 <script>
-(async function(){var K="sb_publishable_r9QAbirArp02AEGxLBRs0A_P6vVLiD5";try{var r=await fetch("https://wsnsogahsnobdrfajuxs.supabase.co/rest/v1/rpc/public_stats",{method:"POST",headers:{"apikey":K,"Authorization":"Bearer "+K,"Content-Type":"application/json"},body:"{}"});var d=await r.json();rk_users.textContent=d.users;rk_logs.textContent=d.logs;rk_cocktails.textContent=d.cocktails;(d.top||[]).forEach(function(c){var s=document.createElement("span");s.textContent=c.name;s.style.cssText="background:rgba(185,176,106,.14);border:1px solid rgba(185,176,106,.35);color:#e7dfc4;border-radius:999px;padding:7px 14px;font-size:13px;";rk_top.appendChild(s);});}catch(e){var el=document.getElementById("rk-canli");if(el)el.style.display="none";}})();
+(async function(){var K="sb_publishable_r9QAbirArp02AEGxLBRs0A_P6vVLiD5";try{var r=await fetch("https://wsnsogahsnobdrfajuxs.supabase.co/rest/v1/rpc/public_community_feed",{method:"POST",headers:{apikey:K,Authorization:"Bearer "+K,"Content-Type":"application/json"},body:"{}"});var d=await r.json();if(!d||!d.length)throw 0;var f=document.getElementById("rk-feed");d.forEach(function(p){if(!p.photo)return;var c=document.createElement("div");c.style.cssText="position:relative;aspect-ratio:4/5;border-radius:14px;overflow:hidden;background:#241d16;";var i=document.createElement("div");i.style.cssText="position:absolute;inset:0;background:url('"+p.photo+"') center/cover;";var o=document.createElement("div");o.style.cssText="position:absolute;left:0;right:0;bottom:0;padding:12px;background:linear-gradient(transparent,rgba(0,0,0,.72));";var t=document.createElement("div");t.style.cssText="font-size:13px;font-weight:600;color:#fff;";t.textContent=p.name||"";o.appendChild(t);if(p.venue){var v=document.createElement("div");v.style.cssText="font-size:11px;color:#d9cfa0;";v.textContent=p.venue;o.appendChild(v);}c.appendChild(i);c.appendChild(o);f.appendChild(c);});}catch(e){var el=document.getElementById("rk-canli");if(el)el.style.display="none";}})();
 </script>
 </body></html>
